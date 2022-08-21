@@ -1,33 +1,24 @@
-const { get } = require("lodash")
+const DOM = {
+    clouds: document.querySelector(".clouds"),
+    city: document.querySelector(".city"),
+    date: document.querySelector(".date"),
+    time: document.querySelector(".time"),
+    temp: document.querySelector(".main-temp"),
+}
 
-const weather = document.getElementById("weather")
-
-// async function getTemp() {
-//     fetch(
-//         "https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=3019f42598e2771e78de4788949e7fff",
-//         {
-//             mode: "cors",
-//         }
-//     )
-//         .then(function (response) {
-//             return response.json()
-//         })
-//         .then(function (response) {
-//             weather.innerHTML = response.main.feels_like
-//         })
-//         .catch(function (error) {
-//             console.log(error)
-//         })
-// }
 async function getLocation(city) {
     const response = await fetch(
         `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=3019f42598e2771e78de4788949e7fff`,
         { mode: "cors" }
     )
-    response.json().then(function (response) {
-        console.log(`lat=${response[0].lat}&lon=${response[0].lon}`)
-        return `lat=${response[0].lat}&lon=${response[0].lon}`
-    })
+    response
+        .json()
+        .then(function (response) {
+            return getTemp(`lat=${response[0].lat}&lon=${response[0].lon}`)
+        })
+        .catch(function () {
+            console.log("failure")
+        })
 }
 
 async function getTemp(latAndLon) {
@@ -37,9 +28,19 @@ async function getTemp(latAndLon) {
             mode: "cors",
         }
     )
-    response.json().then(function (response) {
-        console.log(response)
-    })
+    response
+        .json()
+        .then(function (response) {
+            console.log(response)
+            DOM.temp.innerHTML = kelvinToCelcius(response.main.temp) + " °C"
+        })
+        .catch(function () {
+            console.log("failure in gettemp")
+        })
 }
 
-getTemp(getLocation("Hull"))
+function kelvinToCelcius(temp) {
+    return Math.trunc(temp - 273.15)
+}
+
+getLocation("tokyo")
