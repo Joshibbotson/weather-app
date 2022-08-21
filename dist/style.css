@@ -1,0 +1,43 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-colour: rgb(226, 225, 225);
+    --font-family: "Prompt", sans-serif;
+}
+
+html {
+    background: url(./images/sunset.jpeg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+h1 {
+    color: var(--font-colour);
+    font-family: var(--font-family);
+}
+
+p {
+    color: var(--font-colour);
+    font-family: var(--font-family);
+}
+
+h1.clouds {
+    font-weight: 400;
+}
+
+.main-img {
+    filter: invert(0.9);
+}
