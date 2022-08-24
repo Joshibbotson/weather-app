@@ -38,6 +38,10 @@ h1.clouds {
     font-weight: 400;
 }
 
+.change-temp-type-C {
+    display: none;
+}
+
 .main-img {
     filter: invert(0.9);
 }

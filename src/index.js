@@ -1,10 +1,25 @@
-const DOM = {
+import {
+    kelvinToCelcius,
+    celciusToFahrenheit,
+    fahrenheitToCelcius,
+} from "./temperatureMeasurements"
+
+export const DOM = {
     clouds: document.querySelector(".clouds"),
     city: document.querySelector(".city"),
     date: document.querySelector(".date"),
     time: document.querySelector(".time"),
     temp: document.querySelector(".main-temp"),
+    displayF: document.querySelector(".change-temp-type-F"),
+    displayC: document.querySelector(".change-temp-type-C"),
 }
+
+DOM.displayF.addEventListener("click", () => {
+    return celciusToFahrenheit(DOM.temp.innerHTML)
+})
+DOM.displayC.addEventListener("click", () => {
+    return fahrenheitToCelcius(DOM.temp.innerHTML)
+})
 
 async function getLocation(city) {
     const response = await fetch(
@@ -37,10 +52,6 @@ async function getTemp(latAndLon) {
         .catch(function () {
             console.log("failure in gettemp")
         })
-}
-
-function kelvinToCelcius(temp) {
-    return Math.trunc(temp - 273.15)
 }
 
 getLocation("tokyo")
