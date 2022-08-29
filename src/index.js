@@ -4,17 +4,15 @@ import {
     fahrenheitToCelcius,
 } from "./temperatureMeasurements"
 
-import format from "date-fns/format"
-
 export const DOM = {
     clouds: document.querySelector(".clouds"),
     city: document.querySelector(".city"),
-    date: document.querySelector(".date"),
-    time: document.querySelector(".time"),
     temp: document.querySelector(".main-temp"),
     weatherImg: document.querySelector(".main-img"),
     displayF: document.querySelector(".change-temp-type-F"),
     displayC: document.querySelector(".change-temp-type-C"),
+    searchInput: document.getElementById("search"),
+    searchBtn: document.querySelector(".magnifiying-glass"),
 }
 
 DOM.displayF.addEventListener("click", () => {
@@ -23,10 +21,31 @@ DOM.displayF.addEventListener("click", () => {
 DOM.displayC.addEventListener("click", () => {
     return fahrenheitToCelcius(DOM.temp.innerHTML)
 })
+DOM.searchBtn.addEventListener("click", () => {
+    return getLocation(DOM.searchInput.value)
+})
+document.addEventListener("keypress", e => {
+    if (e.key === "Enter") {
+        return getLocation(DOM.searchInput.value)
+    }
+})
 
+getLocation("China")
 let locationData
+randomBackground()
 
-getLocation("china")
+function randomBackground() {
+    const i = Math.floor(Math.random() * 2)
+
+    if (i === 0) {
+        document.body.style.background =
+            "url(./images/asian.jpeg) no-repeat center center fixed"
+    }
+    if (i === 1) {
+        document.body.style.background =
+            "url(./images/sunset.jpeg) no-repeat center center fixed"
+    }
+}
 
 async function getLocation(city) {
     const response = await fetch(
