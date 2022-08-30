@@ -130,5 +130,12 @@ export function updateUI() {
             alt="sun"
         />`
         }
+        if (weather.includes("mist") === true) {
+            DOM.weatherImg.outerHTML = `<img
+            class="main-img"
+            src="./images/weather pngs/mist.png"
+            alt="sun"
+        />`
+        }
     }
 }
