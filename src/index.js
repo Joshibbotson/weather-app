@@ -8,7 +8,7 @@ export const DOM = {
     clouds: document.querySelector(".clouds"),
     city: document.querySelector(".city"),
     temp: document.querySelector(".main-temp"),
-    weatherImg: document.querySelector(".main-img"),
+    weatherImg: document.querySelector(".weather-img"),
     displayF: document.querySelector(".change-temp-type-F"),
     displayC: document.querySelector(".change-temp-type-C"),
     searchInput: document.getElementById("search"),
@@ -30,7 +30,7 @@ document.addEventListener("keypress", e => {
     }
 })
 
-getLocation("China")
+getLocation("Harrogate")
 let locationData
 randomBackground()
 
@@ -74,12 +74,13 @@ async function getData(latAndLon) {
         .then(function (response) {
             return (locationData = response), console.log(response), updateUI()
         })
-        .catch(function () {
-            console.log("failed to get data")
+        .catch(function (error) {
+            console.log(error)
         })
 }
 
 export function updateUI() {
+    console.log("UI")
     DOM.temp.innerHTML = kelvinToCelcius(locationData.main.temp) + " °C"
     DOM.clouds.innerHTML =
         locationData.weather[0].description.charAt(0).toUpperCase() +
@@ -87,53 +88,64 @@ export function updateUI() {
     DOM.city.innerHTML = locationData.name
 
     weatherImg(locationData.weather[0].description)
+    1
     function weatherImg(weather) {
+        console.log("weatherImg")
         if (weather.includes("clouds") === true) {
-            DOM.weatherImg.outerHTML = `<img
+            DOM.weatherImg.innerHTML = `<img
             class="main-img"
             src="./images/weather pngs/clouds.png"
             alt="clouds"
         />`
+            console.log("helo")
         }
         if (weather.includes("rain") === true) {
-            DOM.weatherImg.outerHTML = `<img
+            DOM.weatherImg.innerHTML = `<img
             class="main-img"
             src="./images/weather pngs/rain.png"
             alt="rain"
         />`
+            console.log("rain")
         }
         if (weather.includes("sun") === true) {
-            DOM.weatherImg.outerHTML = `<img
+            DOM.weatherImg.innerHTML = `<img
             class="main-img"
             src="./images/weather pngs/sun.png"
             alt="sun"
         />`
         }
         if (weather.includes("snow") === true) {
-            DOM.weatherImg.outerHTML = `<img
+            DOM.weatherImg.innerHTML = `<img
             class="main-img"
             src="./images/weather pngs/snow.png"
             alt="sun"
         />`
         }
         if (weather.includes("partly") === true) {
-            DOM.weatherImg.outerHTML = `<img
+            DOM.weatherImg.innerHTML = `<img
             class="main-img"
             src="./images/weather pngs/partly cloudy.png"
             alt="sun"
         />`
         }
         if (weather.includes("thunderstorm") === true) {
-            DOM.weatherImg.outerHTML = `<img
+            DOM.weatherImg.innerHTML = `<img
             class="main-img"
             src="./images/weather pngs/thunderstorm.png"
             alt="sun"
         />`
         }
         if (weather.includes("mist") === true) {
-            DOM.weatherImg.outerHTML = `<img
+            DOM.weatherImg.innerHTML = `<img
             class="main-img"
             src="./images/weather pngs/mist.png"
+            alt="sun"
+        />`
+        }
+        if (weather.includes("clear") === true) {
+            DOM.weatherImg.innerHTML = `<img
+            class="main-img"
+            src="./images/weather pngs/clearSky.png"
             alt="sun"
         />`
         }
