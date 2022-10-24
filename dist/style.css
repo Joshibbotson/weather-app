@@ -53,9 +53,10 @@ h1.clouds {
 }
 
 input[type="text"] {
-    background: none;
+    background: rgba(0, 0, 0, 0.492);
     color: white;
     border: none;
+    border-top-left-radius: 10px;
 }
 input[type="text"]:focus {
     outline: none;
@@ -64,6 +65,8 @@ input[type="text"]:focus {
 .magnifiying-glass {
     filter: invert(1);
     padding: 0.2rem;
+    background: rgba(255, 255, 255, 0.492);
+    border-top-right-radius: 10px;
 }
 @media (min-width: 1127px) {
     h1 {
