@@ -39,11 +39,11 @@ function randomBackground() {
 
     if (i === 0) {
         document.body.style.background =
-            "url(./images/asian.jpeg) no-repeat center center fixed"
+            "url(../src/images/asian.jpeg) no-repeat center center fixed"
     }
     if (i === 1) {
         document.body.style.background =
-            "url(./images/sunset.jpeg) no-repeat center center fixed"
+            "url(../src/images/sunset.jpeg) no-repeat center center fixed"
     }
 }
 
@@ -92,56 +92,56 @@ export function updateUI() {
         if (weather.includes("clouds")) {
             DOM.weatherImg.innerHTML = `<img
             class="main-img"
-            src="./images/weather pngs/clouds.png"
+            src="../src/images/weatherpngs/clouds.png"
             alt="clouds"
         />`
         }
         if (weather.includes("rain") || weather.includes("drizzle")) {
             DOM.weatherImg.innerHTML = `<img
             class="main-img"
-            src="./images/weather pngs/rain.png"
+            src="../src/images/weatherpngs/rain.png"
             alt="rain"
         />`
         }
         if (weather.includes("sun")) {
             DOM.weatherImg.innerHTML = `<img
             class="main-img"
-            src="./images/weather pngs/sun.png"
+            src="../src/images/weatherpngs/sun.png"
             alt="sun"
         />`
         }
         if (weather.includes("snow")) {
             DOM.weatherImg.innerHTML = `<img
             class="main-img"
-            src="./images/weather pngs/snow.png"
+            src="../src/images/weatherpngs/snow.png"
             alt="sun"
         />`
         }
         if (weather.includes("partly")) {
             DOM.weatherImg.innerHTML = `<img
             class="main-img"
-            src="./images/weather pngs/partly cloudy.png"
+            src="../src/images/weatherpngs/partly cloudy.png"
             alt="sun"
         />`
         }
         if (weather.includes("thunderstorm")) {
             DOM.weatherImg.innerHTML = `<img
             class="main-img"
-            src="./images/weather pngs/thunderstorm.png"
+            src="../src/images/weatherpngs/thunderstorm.png"
             alt="sun"
         />`
         }
         if (weather.includes("mist")) {
             DOM.weatherImg.innerHTML = `<img
             class="main-img"
-            src="./images/weather pngs/mist.png"
+            src="../src/images/weatherpngs/mist.png"
             alt="sun"
         />`
         }
         if (weather.includes("clear")) {
             DOM.weatherImg.innerHTML = `<img
             class="main-img"
-            src="./images/weather pngs/clearSky.png"
+            src="../src/images/weatherpngs/clearSky.png"
             alt="sun"
         />`
         }
